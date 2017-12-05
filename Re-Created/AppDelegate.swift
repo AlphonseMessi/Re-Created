@@ -16,6 +16,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame:UIScreen.main.bounds)
+        
+        let tabbarcontroller = UITabBarController()
+        let homecontroller = UINavigationController(rootViewController:HomeViewController())
+        let usercontroller = UINavigationController(rootViewController:UserViewController())
+        let makecontroller = UINavigationController(rootViewController:MakeViewController())
+        let exhibitioncontroller = UINavigationController(rootViewController:ExhibitionViewController())
+        
+        tabbarcontroller.viewControllers = [homecontroller,exhibitioncontroller,makecontroller,usercontroller]
+        
+        let tabitem1 = UITabBarItem(title: "", image: UIImage(named:"Home"), selectedImage: UIImage(named:"Home-S"))
+        let tabitem2 = UITabBarItem(title: "", image: UIImage(named:"User"), selectedImage: UIImage(named:"User-S"))
+        let tabitem3 = UITabBarItem(title: "", image: UIImage(named:"Write"), selectedImage: UIImage(named:"Write-S"))
+        let tabitem4 = UITabBarItem(title: "", image: UIImage(named:"Exhi"), selectedImage: UIImage(named:"Exhi-S"))
+        
+        homecontroller.tabBarItem = tabitem1
+        usercontroller.tabBarItem = tabitem2
+        makecontroller.tabBarItem = tabitem3
+        exhibitioncontroller.tabBarItem = tabitem4
+        tabbarcontroller.navigationController?.navigationBar.barTintColor = UIColor.white
+        //tabbarcontroller.navigationController?.navigationBar.setBackgroundImage(UIImage(named:"recreate"), for: )
+        
+        tabbarcontroller.tabBar.isTranslucent = false
+        tabbarcontroller.tabBar.tintColor = UIColor.yellow
+        tabbarcontroller.tabBar.barTintColor = UIColor.black
+        
+        self.window?.rootViewController = tabbarcontroller
+        self.window?.backgroundColor = UIColor.white
+        self.window?.makeKeyAndVisible()
         return true
     }
 
